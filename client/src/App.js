@@ -3,8 +3,23 @@ import { token } from './components/spotify.js';
 import styled from 'styled-components';
 import Login from './components/Login.js';
 import Home from './components/Home.js';
+import { createGlobalStyle } from "styled-components";
 
 
+
+const GlobalStyle= createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css?family=Inter');
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+`
+
+const Style = styled.div`
+  height: 100%;
+  min-height:100vh;
+  margin: 0px;
+  background-color: #181818;
+`;
 
 class App extends Component {
   state = {
@@ -20,12 +35,13 @@ class App extends Component {
     const { token } = this.state;
 
     return (
-      <div style={{ height:'100%', minHeight:'100vh' }}>
-        
-
-        {token ? <div>
-                 <Home/> </div> : <Login />}
-      </div>
+      <React.Fragment>
+      <GlobalStyle/>
+        <Style>
+        {token ?   <Home/> : <Login />}
+       </Style>
+  
+      </React.Fragment>
     );
   }
 }
