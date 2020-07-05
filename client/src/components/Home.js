@@ -6,6 +6,21 @@ import { getUserInfo, logout } from './spotify';
 
 import styled from 'styled-components/macro';
 
+// cover profile image
+const Profile = styled.div`
+display: inline-block;
+margin: 14px;
+width: 250px;
+height: 250px;
+  img { 
+    border: 2px black solid;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+   object-fit: cover;
+  }
+`;
+
 
 const UserName = styled.a`
   &:hover,
@@ -36,7 +51,7 @@ const LogoutButton = styled.a`
 `;
 
 
-class User extends Component {
+class Home extends Component {
   state = {
     user: null,
 /*     followedArtists: null,
@@ -53,7 +68,7 @@ class User extends Component {
 
 
   async getData() {
-    const { user} = await getUserInfo();
+    const { user } = await getUserInfo();
     this.setState({ user });
   }
 
@@ -64,11 +79,16 @@ class User extends Component {
     return (
       <React.Fragment>
           {user ? (
-             <div style={{ padding: '40px'}}>  
+             <div>  
               
-             
+             <Profile>
+               {user.images.length> 0  ? (
+                  <img src={user.images[0].url} alt='urpic' />
+                   ) : (<div>IMG</div> )}
+              
+             </Profile>
              <UserName href={user.external_urls.spotify} target="_blank" rel="noopener noreferrer">
-                <Name> <h1>{user.display_name}</h1></Name>
+                <Name> {user.display_name}</Name>
               </UserName>
              
               <LogoutButton onClick={logout}>Logout</LogoutButton>
@@ -87,4 +107,4 @@ class User extends Component {
   }
 }
 
-export default User;
+export default Home;
