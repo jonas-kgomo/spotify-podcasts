@@ -5,3 +5,5 @@ This project uses the spotify [auth](https://github.com/spotify/web-api-auth-exa
 
 
 Global Podcast vs Local Podcasts
+
+![img](https://github.com/jonas-kgomo/spotify-podcasts/tree/master/client/public/login.png)
