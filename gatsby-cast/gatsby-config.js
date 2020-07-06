@@ -4,7 +4,14 @@ module.exports = {
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
   },
-  plugins: [
+  plugins: [    
+    {
+    resolve: 'gatsby-source-simplecast',
+    options: {
+      token: 'abcdefghijklmnopqrstuvwxyz1234567890',
+      podcastId: 'abc123de-456f-gh78-90ij-klmn1234opqr',
+    },
+  },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
